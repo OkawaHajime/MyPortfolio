@@ -1,0 +1,335 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 194737b46e04ff84a936435d5601662f, type: 3}
+  m_Name: "dc_\u89AA\u72FC_\u8D70\u308B"
+  m_EditorClassIdentifier: 
+  Version: 65537
+  TableCellMap:
+  - Name: "\u89AA\u72FC"
+    SizeOriginal: {x: 2133, y: 2133}
+    TableCell:
+    - Name: "\u80F4\u4F53"
+      Rectangle:
+        serializedVersion: 2
+        x: 0
+        y: 14
+        width: 1218
+        height: 632
+      Pivot: {x: 609, y: 316}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u982D"
+      Rectangle:
+        serializedVersion: 2
+        x: 1270
+        y: 18
+        width: 834
+        height: 620
+      Pivot: {x: 261, y: 354}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u8033\u5DE6"
+      Rectangle:
+        serializedVersion: 2
+        x: 1428
+        y: 648
+        width: 246
+        height: 208
+      Pivot: {x: 91, y: 186}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u8033\u53F3"
+      Rectangle:
+        serializedVersion: 2
+        x: 1916
+        y: 628
+        width: 198
+        height: 164
+      Pivot: {x: 63, y: 143}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u5DE6\u5F8C\u308D\u8DB3"
+      Rectangle:
+        serializedVersion: 2
+        x: 14
+        y: 680
+        width: 417
+        height: 367
+      Pivot: {x: 253, y: 122}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u5DE6\u5F8C\u308D\u8DB3_1"
+      Rectangle:
+        serializedVersion: 2
+        x: 2
+        y: 1086
+        width: 398
+        height: 493
+      Pivot: {x: 113, y: 125}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u5DE6\u5F8C\u308D\u8DB3_2"
+      Rectangle:
+        serializedVersion: 2
+        x: 13
+        y: 1573
+        width: 164
+        height: 416
+      Pivot: {x: 93, y: 146}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u5DE6\u5F8C\u308D\u8DB3_3"
+      Rectangle:
+        serializedVersion: 2
+        x: 224
+        y: 1770
+        width: 133
+        height: 197
+      Pivot: {x: 31, y: 27.000002}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u5DE6\u5F8C\u308D\u8DB3_4"
+      Rectangle:
+        serializedVersion: 2
+        x: 158
+        y: 1982
+        width: 185
+        height: 137
+      Pivot: {x: 29, y: 23}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u53F3\u5F8C\u308D\u8DB3"
+      Rectangle:
+        serializedVersion: 2
+        x: 460
+        y: 696
+        width: 434
+        height: 372
+      Pivot: {x: 297, y: 109}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u53F3\u5F8C\u308D\u8DB3_1"
+      Rectangle:
+        serializedVersion: 2
+        x: 474
+        y: 1096
+        width: 336
+        height: 502
+      Pivot: {x: 177, y: 108}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u53F3\u5F8C\u308D\u8DB3_2"
+      Rectangle:
+        serializedVersion: 2
+        x: 596
+        y: 1622
+        width: 286
+        height: 388
+      Pivot: {x: 166, y: 163}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u53F3\u5F8C\u308D\u8DB3_3"
+      Rectangle:
+        serializedVersion: 2
+        x: 405
+        y: 1682
+        width: 125
+        height: 248
+      Pivot: {x: 38, y: 32.999996}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u53F3\u5F8C\u308D\u8DB3_4"
+      Rectangle:
+        serializedVersion: 2
+        x: 405
+        y: 1990
+        width: 171
+        height: 128
+      Pivot: {x: 18.999998, y: 24}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u53F3\u524D\u8DB3"
+      Rectangle:
+        serializedVersion: 2
+        x: 934
+        y: 674
+        width: 436
+        height: 414
+      Pivot: {x: 142, y: 104}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u53F3\u524D\u8DB3_1"
+      Rectangle:
+        serializedVersion: 2
+        x: 944
+        y: 1100
+        width: 374
+        height: 548
+      Pivot: {x: 221, y: 123}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u53F3\u524D\u8DB3_2"
+      Rectangle:
+        serializedVersion: 2
+        x: 1138
+        y: 1720
+        width: 169
+        height: 409
+      Pivot: {x: 94, y: 69.99999}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u53F3\u524D\u8DB3_3"
+      Rectangle:
+        serializedVersion: 2
+        x: 945
+        y: 1752
+        width: 132
+        height: 205
+      Pivot: {x: 34, y: 38}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u53F3\u524D\u8DB3_4"
+      Rectangle:
+        serializedVersion: 2
+        x: 894
+        y: 2000
+        width: 200
+        height: 121
+      Pivot: {x: 48, y: 30.000002}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u5DE6\u524D\u8DB3"
+      Rectangle:
+        serializedVersion: 2
+        x: 1680
+        y: 892
+        width: 452
+        height: 401
+      Pivot: {x: 150, y: 84.00001}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u5DE6\u524D\u8DB3_1"
+      Rectangle:
+        serializedVersion: 2
+        x: 1368
+        y: 1093
+        width: 309
+        height: 524
+      Pivot: {x: 206, y: 86}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u5DE6\u524D\u8DB3_2"
+      Rectangle:
+        serializedVersion: 2
+        x: 1458
+        y: 1633
+        width: 145
+        height: 398
+      Pivot: {x: 86, y: 48.000004}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u5DE6\u524D\u8DB3_3"
+      Rectangle:
+        serializedVersion: 2
+        x: 1342
+        y: 1919
+        width: 121
+        height: 210
+      Pivot: {x: 27.000002, y: 44.999996}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u5DE6\u524D\u8DB3_4"
+      Rectangle:
+        serializedVersion: 2
+        x: 1593
+        y: 2023
+        width: 199
+        height: 109
+      Pivot: {x: 30, y: 23}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u5C3B\u5C3E"
+      Rectangle:
+        serializedVersion: 2
+        x: 1788
+        y: 1383
+        width: 323
+        height: 750
+      Pivot: {x: 279, y: 27.00001}
+      Mesh:
+        TableCoordinate:
+        - {x: 19, y: 757}
+        - {x: -2, y: 647}
+        - {x: 31, y: 665}
+        - {x: 59, y: 681}
+        - {x: 59, y: 609}
+        - {x: 101, y: 642}
+        - {x: 71, y: 707}
+        - {x: 120, y: 613}
+        - {x: 78, y: 534}
+        - {x: 26, y: 545}
+        - {x: 10, y: 558}
+        - {x: 5, y: 472}
+        - {x: 89, y: 459}
+        - {x: 116, y: 480}
+        - {x: 152, y: 547}
+        - {x: 176, y: 469}
+        - {x: 161, y: 394}
+        - {x: 189, y: 406}
+        - {x: 203, y: 324}
+        - {x: 131, y: 284}
+        - {x: 174, y: 269}
+        - {x: 219, y: 252}
+        - {x: 153, y: 215}
+        - {x: 39, y: 223}
+        - {x: 61, y: 292}
+        - {x: 6, y: 307}
+        - {x: 91, y: 389}
+        - {x: 48, y: 424}
+        - {x: 83, y: 141}
+        - {x: 184, y: 142}
+        - {x: 248, y: 174}
+        - {x: 249, y: 120}
+        - {x: 296, y: 112}
+        - {x: 228, y: 95}
+        - {x: 186, y: 95}
+        - {x: 161, y: 66}
+        - {x: 220, y: 16}
+        - {x: 261, y: 34}
+        - {x: 316, y: 54}
+        - {x: 314, y: 6}
+        - {x: 256, y: 0}
+        TableIndexVertex: 0000000001000000020000000000000002000000030000000300000002000000040000000500000003000000040000000600000003000000050000000500000004000000070000000400000008000000070000000400000009000000080000000a00000009000000040000000a0000000b00000009000000090000000b00000008000000080000000b0000000c000000080000000c0000000d000000080000000d0000000e00000007000000080000000e0000000e0000000d0000000f0000000f0000000d000000100000000f00000010000000110000001100000010000000120000001200000010000000130000001200000013000000140000001200000014000000150000001400000016000000150000001300000016000000140000001300000017000000160000001800000017000000130000001900000017000000180000001a00000019000000180000001a0000001b000000190000000c0000001b0000001a0000000c0000000b0000001b0000000b000000190000001b0000000c0000001a000000100000000d0000000c0000001000000013000000100000001a0000001a0000001800000013000000170000001c00000016000000160000001c0000001d000000160000001d0000001e00000015000000160000001e0000001e0000001d0000001f0000001e0000001f000000200000001f00000021000000200000001d000000210000001f0000001d00000022000000210000001d0000001c000000220000001c0000002300000022000000220000002300000024000000210000002200000024000000250000002100000024000000210000002500000020000000200000002500000026000000250000002700000026000000250000002800000027000000240000002800000025000000010000000a00000004000000020000000100000004000000

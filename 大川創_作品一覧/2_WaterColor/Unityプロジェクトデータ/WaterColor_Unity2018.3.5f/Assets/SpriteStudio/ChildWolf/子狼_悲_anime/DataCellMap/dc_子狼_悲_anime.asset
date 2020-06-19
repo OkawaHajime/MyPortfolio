@@ -1,0 +1,215 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 194737b46e04ff84a936435d5601662f, type: 3}
+  m_Name: "dc_\u5B50\u72FC_\u60B2_anime"
+  m_EditorClassIdentifier: 
+  Version: 65537
+  TableCellMap:
+  - Name: "\u5B50\u4F9B\u72FC_\u60B2_\u3070\u3089\u3057"
+    SizeOriginal: {x: 2133, y: 2133}
+    TableCell:
+    - Name: "\u80F4\u4F53"
+      Rectangle:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1224
+        height: 1060
+      Pivot: {x: 612, y: 530}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u8033\u3000\u624B\u524D"
+      Rectangle:
+        serializedVersion: 2
+        x: 1384
+        y: 0
+        width: 396
+        height: 272
+      Pivot: {x: 198, y: 136}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u9854"
+      Rectangle:
+        serializedVersion: 2
+        x: 1296
+        y: 280
+        width: 744
+        height: 512
+      Pivot: {x: 165, y: 332}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u524D\u8DB3\u592A\u3082\u3082\u3000\u5965"
+      Rectangle:
+        serializedVersion: 2
+        x: 1756
+        y: 796
+        width: 372
+        height: 400
+      Pivot: {x: 170, y: 16.999996}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u524D\u8DB3\u3059\u306D\u3000\u5965"
+      Rectangle:
+        serializedVersion: 2
+        x: 1848
+        y: 1220
+        width: 284
+        height: 460
+      Pivot: {x: 145, y: 33.999996}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u524D\u8DB3\u3000\u5965"
+      Rectangle:
+        serializedVersion: 2
+        x: 1884
+        y: 1688
+        width: 240
+        height: 192
+      Pivot: {x: 62, y: 37.999996}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u524D\u8DB3\u3000\u624B\u524D"
+      Rectangle:
+        serializedVersion: 2
+        x: 1888
+        y: 1920
+        width: 244
+        height: 200
+      Pivot: {x: 63, y: 33.999996}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u524D\u8DB3\u592A\u3082\u3082\u3000\u624B\u524D"
+      Rectangle:
+        serializedVersion: 2
+        x: 1368
+        y: 1048
+        width: 436
+        height: 476
+      Pivot: {x: 167, y: 31.999998}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u524D\u8DB3\u3059\u306D\u3000\u624B\u524D"
+      Rectangle:
+        serializedVersion: 2
+        x: 1128
+        y: 1020
+        width: 212
+        height: 496
+      Pivot: {x: 109, y: 75}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u8033\u3000\u5965"
+      Rectangle:
+        serializedVersion: 2
+        x: 1312
+        y: 800
+        width: 380
+        height: 224
+      Pivot: {x: 178, y: 158}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u5F8C\u8DB3\u592A\u3082\u3082\u3000\u5965"
+      Rectangle:
+        serializedVersion: 2
+        x: 444
+        y: 1100
+        width: 684
+        height: 472
+      Pivot: {x: 223, y: 126}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u5F8C\u8DB3\u592A\u3082\u3082\u3000\u624B\u524D"
+      Rectangle:
+        serializedVersion: 2
+        x: 452
+        y: 1604
+        width: 672
+        height: 512
+      Pivot: {x: 210, y: 102}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u5F8C\u8DB3\u3059\u306D\u3000\u5965"
+      Rectangle:
+        serializedVersion: 2
+        x: 0
+        y: 1124
+        width: 332
+        height: 216
+      Pivot: {x: 224, y: 27}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u5F8C\u8DB3\u3000\u5965"
+      Rectangle:
+        serializedVersion: 2
+        x: 0
+        y: 1352
+        width: 400
+        height: 244
+      Pivot: {x: 47.000004, y: 38.999996}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u5F8C\u8DB3\u3059\u306D\u3000\u624B\u524D"
+      Rectangle:
+        serializedVersion: 2
+        x: 4
+        y: 1596
+        width: 224
+        height: 204
+      Pivot: {x: 156, y: 29.999998}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u5F8C\u8DB3\u3000\u624B\u524D"
+      Rectangle:
+        serializedVersion: 2
+        x: 8
+        y: 1832
+        width: 440
+        height: 220
+      Pivot: {x: 80, y: 36}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: "\u5C3B\u5C3E_1"
+      Rectangle:
+        serializedVersion: 2
+        x: 1120
+        y: 1560
+        width: 760
+        height: 572
+      Pivot: {x: 141, y: 137}
+      Mesh:
+        TableCoordinate:
+        - {x: 327, y: 245}
+        - {x: 144, y: 548}
+        - {x: -5, y: 312}
+        - {x: 475, y: 584}
+        - {x: 584, y: 289}
+        - {x: 769, y: 526}
+        - {x: 206, y: 170}
+        - {x: 85, y: 134}
+        - {x: 159, y: 28}
+        TableIndexVertex: 000000000100000002000000030000000100000000000000040000000300000000000000030000000400000005000000000000000200000006000000060000000200000007000000070000000800000006000000
