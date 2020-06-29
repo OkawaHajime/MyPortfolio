@@ -12,9 +12,8 @@ public class TutorialSceneManager : MonoBehaviour
 	private GameObject _playerObject = null;
 	private PlayerController _playerController = null;
 
-	private GameObject _initialEquipment = null;
-	private GameObject _itemManagerObject = null;
-	private ItemManager _itemManager = null;
+	private GameObject _initialEquipmentObject = null;
+	private Item _initialEquipment = null;
 
 	private GameObject _enemyObject = null;
 	private ChangeTargetPoint _enemyBrain = null;
@@ -44,9 +43,8 @@ public class TutorialSceneManager : MonoBehaviour
 		_playerObject = GameObject.Find("Player");
 		_playerController = _playerObject.GetComponentInChildren<PlayerController>();
 		
-		_initialEquipment = GameObject.Find("FlashLight");
-		_itemManagerObject = GameObject.Find("ItemManager");
-		_itemManager = _itemManagerObject.GetComponent<ItemManager>();
+		_initialEquipmentObject = GameObject.Find("FlashLight");
+		_initialEquipment = _initialEquipmentObject.GetComponent<Item>();
 
 		_enemyObject = GameObject.Find("Enemy_tutorial");
 		_enemyBrain = _enemyObject.GetComponentInChildren<ChangeTargetPoint>();
@@ -85,7 +83,7 @@ public class TutorialSceneManager : MonoBehaviour
 			.ObserveEveryValueChanged(_ => _flashLightText.activeSelf)
 			.Where(x => x)
 			.Subscribe(_ => {
-				_itemManager.GetItem(_initialEquipment);	
+				_initialEquipment.ObjectAction();	
 			});
 
 		_lightEffect
