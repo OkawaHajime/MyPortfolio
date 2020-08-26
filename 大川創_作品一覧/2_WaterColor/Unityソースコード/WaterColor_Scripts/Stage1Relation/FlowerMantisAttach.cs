@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ColorAttachを継承
+/// ハナカマキリの着色時の処理
+/// 正解時：笑顔アニメーションを再生
+/// 不正解時：攻撃アニメーションを再生
+/// </summary>
 public class FlowerMantisAttach : ColorAttach
 {
 	public enum FLOWERMANTIS {
@@ -14,10 +20,10 @@ public class FlowerMantisAttach : ColorAttach
 	private GameObject _clone = null;
 	private string loopEnd = null;
 
-	protected override void Setting()
+	protected override void Initialize()
 	{
 		loopEnd = _animations[(int)FLOWERMANTIS.FLOWERMANTIS_SMILE].name;
-		base.Setting();
+		base.Initialize();
 	}
 
 	protected override void Regain()
@@ -32,6 +38,7 @@ public class FlowerMantisAttach : ColorAttach
 		_player.PlayerAnimationChange(Player.ANIM_TYPE.ANIM_TYPE_SURPRISE);
 	}
 
+	//特定のアニメーションを再生
 	public void SetAnimation(FLOWERMANTIS _changeAnim)
 	{
 		ResetAnimation();
@@ -51,23 +58,27 @@ public class FlowerMantisAttach : ColorAttach
 		}
 	}
 
+	//通常アニメーション
 	private void IntimidationAnim()
 	{
 		_animations[(int)FLOWERMANTIS.FLOWERMANTIS_INTIMIDATION].SetActive(true);
 		box2D.enabled = true;
 	}
 
+	//笑顔アニメーション
 	private void SmileAnim()
 	{
 		_animations[(int)FLOWERMANTIS.FLOWERMANTIS_SMILE].SetActive(true);
 	}
 
+	//攻撃アニメーション
 	private void AttackAnim()
 	{
 		_clone = (GameObject)Instantiate(_animations[(int)FLOWERMANTIS.FLOWERMANTIS_ATTACK], gameObject.transform.position, Quaternion.identity);
 		_clone.transform.parent = gameObject.transform;
 	}
 
+	//全てのアニメーションを一度非表示にする
 	private void ResetAnimation()
 	{
 		foreach (GameObject animation in _animations) {

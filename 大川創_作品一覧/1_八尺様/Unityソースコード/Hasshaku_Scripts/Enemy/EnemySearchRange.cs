@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 敵の探知範囲
+/// 探知範囲内でプレイヤーが走ると最後に走っていた地点まで移動する
+/// </summary>
 public class EnemySearchRange : MonoBehaviour
 {
 	private GameObject _playerObject = null;
@@ -19,6 +23,7 @@ public class EnemySearchRange : MonoBehaviour
 		_enemy = _enemyObject.GetComponent<Enemy>();
 	}
 
+	//Collider関連
 	private void OnTriggerStay(Collider other) 
 	{
 		if (other.gameObject.tag == "Player" && Input.GetKey(KeyCode.LeftShift)) {

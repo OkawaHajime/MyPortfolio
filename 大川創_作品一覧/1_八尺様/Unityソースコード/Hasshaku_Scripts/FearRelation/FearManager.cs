@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
 
+/// <summary>
+/// 送られてくる恐怖値を管理し、レベルの上昇やレベルに応じた効果を付与していく
+/// </summary>
 public class FearManager : MonoBehaviour
 {
     public enum FEAR_LEVEL
@@ -75,14 +78,17 @@ public class FearManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+	//恐怖値増減
     private void UpFear(int _plusNumeric)
     {
+        _fearValue += _plusNumeric;
+		
+		//回復エフェクト
 		if (_plusNumeric < 0) {
 			_healEffect.Play();
 		}
 
-        _fearValue += _plusNumeric;
-
+		//マイナスにならないように調整
 		if (_fearValue < 0) {
 			_fearValue = 0;
 		}
@@ -103,12 +109,13 @@ public class FearManager : MonoBehaviour
         }
 	}
 
+	//恐怖度減少
 	public void DownFear()
 	{
 		_healEffect.Play();
 
+        //恐怖度段階が１より大きい時に恐怖度段階を１段階下げる
 		if (_levelFluct != 0) {
-            //恐怖度段階が１より大きい時に恐怖度段階を１段階下げる
 			_fearValue = 50;
 			_levelFluct -= 1;
 			_currentLevel = (FEAR_LEVEL)_levelFluct;

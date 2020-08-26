@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ステージ3のゴールイベントを行う
+/// </summary>
 public class Stage3Goal : Goal
 {
     protected override void GoalEvent()

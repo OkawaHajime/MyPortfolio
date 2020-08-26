@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 
+/// <summary>
+/// 恐怖値の上昇条件を設定、条件に当てはまったら恐怖値を上昇させる
+/// </summary>
 public class FluctFearTrigger : MonoBehaviour
 {
     [SerializeField] private Animator _volume = null;

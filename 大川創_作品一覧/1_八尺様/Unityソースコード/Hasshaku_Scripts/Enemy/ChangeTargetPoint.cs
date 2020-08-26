@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 敵の追跡判断を行う
+/// </summary>
 public class ChangeTargetPoint : MonoBehaviour 
 {
 	[SerializeField]private float _chaseMag = 1.2f;
@@ -41,6 +44,7 @@ public class ChangeTargetPoint : MonoBehaviour
 
 	private void Awake()
 	{
+		//情報取得
 		_playerObject = GameObject.Find("Player");
 		_playerTransform = _playerObject.GetComponent<Transform>();
 
@@ -54,7 +58,9 @@ public class ChangeTargetPoint : MonoBehaviour
 
 	private void Update()
 	{
+		//恐怖度レベルによって分岐
 		if (!_fearLevelMax) {
+			//敵の視界内で、敵とプレイヤーの間に障害物がなければ追跡する
 			if (_look) {
                 Physics.Linecast(gameObject.transform.position, _playerTransform.position, out _hit);
 				if (_hit.collider.gameObject.tag == "Player") {
@@ -66,6 +72,7 @@ public class ChangeTargetPoint : MonoBehaviour
 			}
 		}
 		else {
+			//常にプレイヤーを追跡する
 			_enemy.SetDestination(_playerTransform.position);
 			if (!_chase) {
 				ChaseMode();
@@ -73,6 +80,7 @@ public class ChangeTargetPoint : MonoBehaviour
 		}
 	}
 
+	//プレイヤー追跡状態
 	private void ChaseMode()
 	{
 		_chase = true;
@@ -81,6 +89,7 @@ public class ChangeTargetPoint : MonoBehaviour
 		_enemy.Speed *= _chaseMag;
 	}
 
+	//ステージ巡回状態
 	public void PatrolMode()
 	{
 		_chase = false;
@@ -89,6 +98,7 @@ public class ChangeTargetPoint : MonoBehaviour
         _enemy.Speed /= _chaseMag;
 	}
 
+	//視界内に入る
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag == "Player") {
@@ -96,6 +106,7 @@ public class ChangeTargetPoint : MonoBehaviour
 		}
 	}
 
+	//視界内から出る
 	private void OnTriggerExit(Collider other)
 	{
 		if (other.gameObject.tag == "Player") {

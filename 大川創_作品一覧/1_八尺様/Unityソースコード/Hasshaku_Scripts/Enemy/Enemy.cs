@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.AI;
 using UniRx;
 
+/// <summary>
+/// 敵の追跡システム
+/// Navmeshの慣性がないバージョン
+/// </summary>
 public class Enemy : MonoBehaviour
 {
 	[SerializeField] private float _walkSpeed = 10.0f;
@@ -36,7 +40,6 @@ public class Enemy : MonoBehaviour
 			return _enemySpawn;
 		}
 	}
-
 
     private AudioSource audioSource = null;
 
@@ -71,6 +74,7 @@ public class Enemy : MonoBehaviour
 
 	private void Awake()
 	{
+		//情報取得
 		_sceneChangeTriggerObject = GameObject.Find("SceneChangeEffectTrigger");
 		_sceneChangeTrigger = _sceneChangeTriggerObject.GetComponent<SceneChangeEffectTrigger>();
 		
@@ -88,6 +92,7 @@ public class Enemy : MonoBehaviour
 
 	private void Start()
 	{
+		//敵がステージに生成されたことを通知
 		_enemySpawn.OnNext(Unit.Default);
 
 		//NavMeshAgentの移動、回転の無効化
@@ -95,6 +100,7 @@ public class Enemy : MonoBehaviour
 		_agent.angularSpeed = 0.0f;
 		_agent.acceleration = 0.0f;
 
+		//最初の巡回地点を設定
 		Random.InitState(System.DateTime.Now.Millisecond);
 		SetPatrolPoint();
 	}
@@ -163,20 +169,24 @@ public class Enemy : MonoBehaviour
 		}
 	}
 
+	//巡回地点を設定
 	public void SetPatrolPoint()
 	{
 		_point = _patrolPoint[Random.Range(0, _patrolPoint.Count)];
 		SetDestination(_point.position);
 	}
 
+	//2点間のルートを設定
 	public void SetDestination(Vector3 position)
 	{
 		_destination = position;
 		_agent.SetDestination(position);
 	}
 
+	//Collider関連
 	private void OnCollisionEnter(Collision collision)
 	{
+		//プレイヤーに触れたらゲームオーバーシーンへ遷移
 		if (collision.gameObject.tag == "Player") {
 			Cursor.visible = true;
 			Cursor.lockState = CursorLockMode.None;

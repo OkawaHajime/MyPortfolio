@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// ColorAttachを継承
+/// きのこの着色時の処理
+/// 正解時：きのこと背景のSpriteを切り替える
+/// 不正解時：全ての色を付けるまで白黒の状態を維持
+/// </summary>
 public class MushroomAttach : ColorAttach
 {
 	private enum PHASE { 
@@ -10,14 +16,14 @@ public class MushroomAttach : ColorAttach
 		PHASE_1,
 	};
 
-	[SerializeField]private Image _flash = null;
-	[SerializeField]private Sprite _rainbowMushroom = null;
-	[SerializeField]private Sprite _wood = null;
-	[SerializeField]private Sprite _ground = null;
-	[SerializeField]private Sprite _background = null;
-	[SerializeField]private SpriteRenderer _wood_mono = null;
-	[SerializeField]private SpriteRenderer _ground_mono = null;
-	[SerializeField]private SpriteRenderer _background_mono = null;
+	[SerializeField] private Image _flash = null;
+	[SerializeField] private Sprite _rainbowMushroom = null;
+	[SerializeField] private Sprite _wood = null;
+	[SerializeField] private Sprite _ground = null;
+	[SerializeField] private Sprite _background = null;
+	[SerializeField] private SpriteRenderer _wood_mono = null;
+	[SerializeField] private SpriteRenderer _ground_mono = null;
+	[SerializeField] private SpriteRenderer _background_mono = null;
 	private PHASE _phase = PHASE.PHASE_0;
 	private float _alpha = 0.0f;
 	private float _startFlash = 0.1f;
@@ -30,14 +36,15 @@ public class MushroomAttach : ColorAttach
 	private bool _purple_complete = false;
 	private bool _brown_complete = false;
 
-	protected override void Setting()
+	protected override void Initialize()
 	{
 		enabled = false;
-		base.Setting();
+		base.Initialize();
 	}
 
 	protected override void Failure()
 	{
+		//全てのboolがtrueになるまで失敗扱いにする
 		switch (_nowColor.sprite.name) {
 			case "Red":
 				_red_complete = true;
@@ -75,6 +82,7 @@ public class MushroomAttach : ColorAttach
 				break;
 		}
 
+		//全てのboolがtrueになったら着色イベントを開始
 		if(_red_complete && _blue_complete && _yellow_complete && _green_complete && _pink_complete && _purple_complete && _brown_complete) {
 			box2D.enabled = false;
 			enabled = true;
@@ -87,6 +95,7 @@ public class MushroomAttach : ColorAttach
 
 	private void Update()
 	{
+		//着色イベント
 		switch (_phase) {
 			case PHASE.PHASE_0:
 				actOnPhase0();
@@ -98,8 +107,10 @@ public class MushroomAttach : ColorAttach
 		}
 	}
 
+	//フェードイン（フラッシュ）
 	private void actOnPhase0()
 	{
+		//全体が白くなったらSpriteを切り替える
 		_alpha += _startFlash;
 		setAlpha(_alpha, _flash);
 		if(_alpha >= 5.0f) {
@@ -112,8 +123,10 @@ public class MushroomAttach : ColorAttach
 		}
 	}
 
+	//フェードアウト（フラッシュ開け）
 	private void actOnPhase1()
 	{
+		//フェードアウトが終わったらプレイヤーにリアクションをさせる
 		_alpha += _endFlash;
 		setAlpha(1 - _alpha, _flash);
 		if(_alpha >= 1.0f) {
@@ -123,6 +136,7 @@ public class MushroomAttach : ColorAttach
 		}
 	}
 
+	//透明度変更
 	private void setAlpha(float alpha, Image flash)
 	{
 		Color color = flash.color;

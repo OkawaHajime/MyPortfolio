@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ステージ1のオープニングイベントのために、プレイヤーの動きを一時的に止める
+/// </summary>
 public class StartEvent : MonoBehaviour
 {
-	[SerializeField]private Player _player = null;
+	[SerializeField] private Player _player = null;
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{

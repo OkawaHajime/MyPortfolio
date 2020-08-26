@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// リスの移動とアニメーション再生、色の精の出現させる演出を行う
+/// </summary>
 public class SquirrelWork : MonoBehaviour
 {
     private enum SQUIRREL_ANIM
@@ -28,14 +31,15 @@ public class SquirrelWork : MonoBehaviour
 
     private void Update()
     {
+        //右に直進
         _squirrelRigid.velocity = new Vector2(speed, _squirrelRigid.velocity.y);
     }
 
+    //指定のアニメーションを再生
     private void SetSquirrelAnimation(SQUIRREL_ANIM squirrel)
     {
         ResetAnimation();
         switch (squirrel) {
-
             case SQUIRREL_ANIM.SQUIRREL_ANIM_RUN:
                 _squirrel_run.SetActive(true);
                 enabled = true;
@@ -48,20 +52,24 @@ public class SquirrelWork : MonoBehaviour
         }
     }
 
+    //全てのアニメーションを一度止める
     private void ResetAnimation()
     {
         _squirrel_wait.SetActive(false);
         _squirrel_run.SetActive(false);
     }
 
+    //Collider関連
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
+        //指定地点まで来たら止まる
 		if (collision.gameObject.tag == "Finish") {
 			SetSquirrelAnimation(SQUIRREL_ANIM.SQUIRREL_ANIM_WAIT);
 			StartCoroutine(SetLastSource());
 		}
 	}
 
+    //指定時間待機後、全ての色の精を出現させる
 	private IEnumerator SetLastSource()
 	{
 		yield return new WaitForSeconds(0.8f);

@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Itemを継承
+/// ランプに向かって使用すると、ランプを点灯させる
+/// </summary>
 public class Matches : Item
 {
 	[SerializeField]private int _use_restrictions = 3;
@@ -32,6 +36,7 @@ public class Matches : Item
 		_matchObject = gameObject.transform.GetChild(0).gameObject;
 	}
 
+	//取得時、マッチの残数を表示
 	public override void ObjectAction()
 	{
 		base.ObjectAction();
@@ -44,6 +49,7 @@ public class Matches : Item
 		_firstPick = DisplayTutorial(_firstPick);
 	}
 
+	//残数がないとき、オブジェクトを削除
 	public override void ItemDrop()
 	{
 		if(_use_restrictions == 0) {
@@ -55,13 +61,12 @@ public class Matches : Item
 		}
 	}
 
+	//使用時、残数を減らしてテキストを表示、残数が0になったら捨てる
 	public override void ItemEffect()
 	{
 		base.ItemEffect();
 		
-		if (_mouseController.HitObject.collider != null &&
-			_mouseController.HitObject.collider.gameObject.tag == "Lamp") 
-		{
+		if (_mouseController.HitObject.collider != null && _mouseController.HitObject.collider.gameObject.tag == "Lamp") {
 			_use_restrictions -= 1;
 			_use_restrictions_Text.text = "（残り：" + _use_restrictions.ToString() + "本）";
 			_use_restrictions_Object.SetActive(true);

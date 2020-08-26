@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
+/// <summary>
+/// プレイヤーの画面エフェクトアニメーションを再生
+/// </summary>
 public class PlayerFovEffect : MonoBehaviour
 {
     [SerializeField] private Color _blindColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);

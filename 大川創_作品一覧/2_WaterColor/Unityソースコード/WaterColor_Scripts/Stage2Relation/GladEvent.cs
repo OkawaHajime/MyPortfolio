@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ステージ2の終盤のイベントを行う
+/// </summary>
 public class GladEvent : MonoBehaviour
 {
-	[SerializeField]private Player _player = null;
+	[SerializeField] private Player _player = null;
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{

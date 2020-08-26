@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 敵を視認中、恐怖値を上昇させる
+/// </summary>
 public class GazeFluctFear : MonoBehaviour
 {
 	[SerializeField]private Transform _enemy = null;

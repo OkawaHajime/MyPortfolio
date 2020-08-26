@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 
+/// <summary>
+/// Itemを継承
+/// 使用時、前方にまっすぐ伸びる光を表示
+/// </summary>
 public class FlashLight : Item
 {
 	[SerializeField]private float _batteryTimeSec = 300.0f;
@@ -35,6 +39,7 @@ public class FlashLight : Item
 		
 		_lightEffect.enabled = false;
 		
+		//アイテム切り替えの通知があった時に、ライトをOFFにする
 		_itemManager.SwitchItem
 			.Subscribe(_ => {
 				_lightON = false;
@@ -42,6 +47,7 @@ public class FlashLight : Item
 			});
 	}
 
+	//使用済みのものではなかった場合、拾ったらすぐライトを点ける
 	public override void ObjectAction()
 	{
 		base.ObjectAction();
@@ -51,6 +57,7 @@ public class FlashLight : Item
 		}
 	}
 
+	//使用済みではなかった場合、コルーチンを止めてから捨てる
 	public override void ItemDrop()
 	{
 		if (_possibleUse != null) {
@@ -59,10 +66,12 @@ public class FlashLight : Item
 		base.ItemDrop();
 	}
 
+	//ライトの点灯
 	public override void ItemEffect()
 	{
 		base.ItemEffect();
 		
+		//使用済みではなかった場合、ライトを点灯
 		if (_possibleUse != null) {
 			if (!_lightON) {
 				_lightON = true;
@@ -77,13 +86,14 @@ public class FlashLight : Item
 		}
 	}
 
+	//使用時間の計測
 	private IEnumerator UseTime()
 	{
 		while (true) {
 			yield return new WaitWhile(() => !_lightON);
-			
 			_useTime += Time.unscaledDeltaTime;
 			
+			//使用時間の合計が一定以上になった時、ライトが点灯しないようにする
 			if (_useTime > _batteryTimeSec) {
 				_lightEffect.enabled = false;
 				_lightUI.Switch(false);

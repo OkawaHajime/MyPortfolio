@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// 現在シーンから別シーンへの遷移を行う
+/// </summary>
 public class SceneChanger : MonoBehaviour
 {
 	public enum FADE_TYPE {
@@ -13,10 +16,10 @@ public class SceneChanger : MonoBehaviour
 	};
 
 	private enum PHASE {
-		PHASE_0, //開始指示
-		PHASE_1, //フェードアウト
-		PHASE_2, //待機
-		PHASE_3, //フェードイン
+		PHASE_0,
+		PHASE_1,
+		PHASE_2,
+		PHASE_3,
 	};
 
 	[SerializeField] private SceneChangeData _data = null;
@@ -71,11 +74,13 @@ public class SceneChanger : MonoBehaviour
 		}
 	}
 
+	//開始指示
 	private void actOnPhase0()
 	{
 		_phase = PHASE.PHASE_1;
 	}
 
+	//フェードアウト
 	private void actOnPhase1()
 	{
 		_time += getDeltaTime();
@@ -91,25 +96,24 @@ public class SceneChanger : MonoBehaviour
 		}
 	}
 
+	//待機
 	private void actOnPhase2()
 	{
+		//指定時間待ったらシーンをロード
 		_time += getDeltaTime();
 		Debug.Log("シーン切り替え待機時間：" + _time);
-
-		//時間まで待つ
 		if (_time >= _idle_time) {
-			//シーンをロード
 			SceneManager.LoadScene(_after_scene, LoadSceneMode.Additive);
 			_time = -0.7f;
 		}
 	}
 
+	//フェードイン
 	private void actOnPhase3()
 	{
 		_time += getDeltaTime();
-		//Debug.Log("シーン切り替え待機時間：" + _time);
 		_effects[(int)_fade_type].endEffect(_time);
-
+		
 		//フェードインが終わったら自分をアンロード
 		if (1 - _time <= 0.0f) {
 			SceneManager.UnloadSceneAsync("Loading");

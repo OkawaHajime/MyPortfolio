@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// プレイヤーのリアクションエフェクトの生成を行う
+/// </summary>
 public class ReactionEffectGenerator : MonoBehaviour
 {
 	public enum REACTION_TYPE {
@@ -12,11 +15,13 @@ public class ReactionEffectGenerator : MonoBehaviour
 	[SerializeField] private ParticleSystem _questionReaction = null;
 	[SerializeField] private ParticleSystem _surpriseReaction = null;
 
+	//初期設定
 	private void Start()
 	{
 		ResetReaction();
 	}
 
+	//特定のリアクションエフェクトの再生
 	public void ReactionGenerate(REACTION_TYPE _reaction)
 	{
 		ResetReaction();
@@ -40,6 +45,7 @@ public class ReactionEffectGenerator : MonoBehaviour
 		}
 	}
 
+	//全てのリアクションエフェクトを非表示
 	private void ResetReaction()
 	{
 		_gladReaction.gameObject.SetActive(false);

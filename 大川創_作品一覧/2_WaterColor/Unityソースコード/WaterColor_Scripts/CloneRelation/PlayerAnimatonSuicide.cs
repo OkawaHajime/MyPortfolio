@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// プレイヤーのリアクションアニメーションの削除を行う
+/// </summary>
 public class PlayerAnimatonSuicide : CloneSuicide
 {
 	[SerializeField] private Player.ANIM_TYPE _set_anim = Player.ANIM_TYPE.ANIM_TYPE_WALK;
@@ -12,6 +15,7 @@ public class PlayerAnimatonSuicide : CloneSuicide
 		_player = _player_Object.GetComponent<Player>();
 	}
 
+	//削除のタイミングでプレイヤーのアニメーションを切り替える
 	protected override void Testament()
 	{
 		_player.PlayerAnimationChange(_set_anim);

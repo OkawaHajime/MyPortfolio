@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ColorAttachを継承
+/// つららの着色時の処理
+/// 正解時：Spriteの切り替え、Rigidbodyを使って落下させる
+/// 不正解時：色に対応したSpriteに切り替え
+/// </summary>
 public class IcicleAttach : ColorAttach
 {
 	[SerializeField]private Sprite _attach = null;
@@ -12,11 +18,11 @@ public class IcicleAttach : ColorAttach
 	private PolygonCollider2D _polygon2D = null;
 	private float _waitTime = 1.0f;
 
-	protected override void Setting()
+	protected override void Initialize()
 	{
 		_polygon2D = GetComponent<PolygonCollider2D>();
 		_polygon2D.enabled = false;
-		base.Setting();
+		base.Initialize();
 	}
 
 	protected override void Regain()
@@ -36,6 +42,7 @@ public class IcicleAttach : ColorAttach
 		StartCoroutine(ReturnMonotone(_death_purple));
 	}
 
+	//指定時間待った後、白黒状態に戻す
 	private IEnumerator ReturnMonotone(GameObject death_color)
 	{
 		yield return new WaitForSeconds(_waitTime);
@@ -44,6 +51,7 @@ public class IcicleAttach : ColorAttach
 		Instantiate(death_color, gameObject.transform.position, Quaternion.identity);
 	}
 
+	//重力の影響を受けるようにする
 	private void AddGravity()
 	{
 		rb = gameObject.AddComponent<Rigidbody2D>();
@@ -51,14 +59,17 @@ public class IcicleAttach : ColorAttach
 		rb.mass = 100;
 	}
 
+	//Collider関連
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
+		//落ちたあと、プレイヤーにリアクションをさせる
 		if (collision.gameObject.tag == "Finish") {
 			_player.PlayerAnimationChange(Player.ANIM_TYPE.ANIM_TYPE_SURPRISE);
 			StartCoroutine(CallBack());
 		}
 	}
 
+	//指定時間待った後、プレイヤーを動かす
 	private IEnumerator CallBack()
 	{
 		yield return new WaitForSeconds(1.01f);

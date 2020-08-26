@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// プロローグイラストの切り替えを行う
+/// </summary>
 public class Prologue : MonoBehaviour
 {
 	private enum PROLOGUE_PHASE {
@@ -22,6 +25,7 @@ public class Prologue : MonoBehaviour
 
 	private void Awake()
 	{
+		//初期設定
 		foreach(SpriteRenderer image_prologue in _image_prologues) {
 			_memory = image_prologue.color;
 			image_prologue.color = new Color(_memory.r, _memory.g, _memory.b, _alpha);
@@ -30,6 +34,7 @@ public class Prologue : MonoBehaviour
 
 	private void Update()
 	{
+		//絵の切り替え
 		switch (_phase) {
 			case PROLOGUE_PHASE.PROLOGUE_PHASE_0:
 				actOnPhase(PROLOGUE_PHASE.PROLOGUE_PHASE_1);
@@ -50,6 +55,7 @@ public class Prologue : MonoBehaviour
 		}
 	}
 
+	//各イラストのフェードイン、フェードアウト
 	private void actOnPhase(PROLOGUE_PHASE changePhase)
 	{
 		_alpha += _alpha_plus;
@@ -70,6 +76,7 @@ public class Prologue : MonoBehaviour
 		}
 	}
 
+	//最後のイラストを表示しきったらシーン遷移
 	private void actOnLastPhase()
 	{
 		_alpha += _alpha_plus;
@@ -80,6 +87,7 @@ public class Prologue : MonoBehaviour
 		}
 	}
 
+	//透明度の変更
 	private void setAlpha(float alpha, SpriteRenderer rend)
 	{
 		_memory = rend.color;

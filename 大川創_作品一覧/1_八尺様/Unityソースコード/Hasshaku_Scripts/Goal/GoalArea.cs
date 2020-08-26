@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// リザルトシーンへ遷移させる
+/// </summary>
 public class GoalArea : MonoBehaviour
 {
 	[SerializeField]private SceneChangeEffectTrigger _sceneChange = null;

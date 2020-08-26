@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// アクション可能なオブジェクトにタッチした時の処理を実行する
+/// 実機（Ipad）版
+/// </summary>
 public class TouchController : MonoBehaviour
 {
 	private Touch _touch = new Touch();
@@ -10,6 +14,7 @@ public class TouchController : MonoBehaviour
 	private Bounds rect = new Bounds();
 	private bool ColorRetention = false;
 
+	//タッチ処理
 	private void Update()
 	{
 		if (Input.touchCount > 0) {
@@ -19,6 +24,7 @@ public class TouchController : MonoBehaviour
 			if (_touch.phase == TouchPhase.Began) {
 				hit = Physics2D.Raycast(world_point, Vector2.zero);
 
+				//Rayを飛ばしてヒットしたオブジェクトによって処理を分岐
 				if (hit) {
 					switch (hit.collider.gameObject.tag) {
 						case "Source":
@@ -27,6 +33,7 @@ public class TouchController : MonoBehaviour
 								ColorRetention = true;
 							}
 							break;
+
 						case "Regainer":
 							hit.collider.GetComponent<ColorAttach>().AttachStart();
 							ColorRetention = false;
@@ -35,7 +42,5 @@ public class TouchController : MonoBehaviour
 				}
 			}
 		}
-
-
 	}
 }

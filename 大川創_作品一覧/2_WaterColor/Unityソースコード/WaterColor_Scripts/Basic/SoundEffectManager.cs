@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// SEの再生を行う
+/// </summary>
 public class SoundEffectManager : MonoBehaviour
 {
     public enum SOUND_TYPE
@@ -21,6 +24,7 @@ public class SoundEffectManager : MonoBehaviour
         _audio = GetComponent<AudioSource>();
     }
 
+    //特定のSEを再生する
     public void PlayBackSound(SOUND_TYPE _selectSound)
     {
         switch (_selectSound) {

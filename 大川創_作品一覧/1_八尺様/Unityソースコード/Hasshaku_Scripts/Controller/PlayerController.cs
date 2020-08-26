@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// キーボードでの操作を行う
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
 	[SerializeField]private float _speed = 0.0f;

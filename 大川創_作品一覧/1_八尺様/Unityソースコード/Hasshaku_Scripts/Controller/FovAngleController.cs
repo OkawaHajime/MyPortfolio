@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// メインカメラに付けるScript
+/// マウスでの視点操作を行う
+/// </summary>
 public class FovAngleController : MonoBehaviour
 {
 	[SerializeField] private float _rollSpeed = 1.0f;

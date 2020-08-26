@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Itemを継承
+/// 使用時、恐怖度を1段階下げる
+/// </summary>
 public class Tranquilizer : Item
 {
 	private GameObject _fearManagerObject = null;
@@ -30,6 +34,7 @@ public class Tranquilizer : Item
 		_firstPick = DisplayTutorial(_firstPick);
 	}
 
+	//使用済みの時オブジェクトを削除
 	public override void ItemDrop()
 	{
 		if (_use) {
@@ -40,6 +45,7 @@ public class Tranquilizer : Item
 		}
 	}
 
+	//使用時にこのアイテムを捨てる
 	public override void ItemEffect()
 	{
 		base.ItemEffect();
