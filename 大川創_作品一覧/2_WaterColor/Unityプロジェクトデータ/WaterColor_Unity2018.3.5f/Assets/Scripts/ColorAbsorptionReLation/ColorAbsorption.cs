@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 色の精に付けるScript
+/// タッチされた際の色の精の移動、UIの切り替えを行う
+/// </summary>
 public class ColorAbsorption : MonoBehaviour
 {
 	[SerializeField] private Sprite Absorb = null;
@@ -31,6 +35,7 @@ public class ColorAbsorption : MonoBehaviour
 		Initialise();
 	}
 	
+	//情報取得
 	protected virtual void Initialise()
 	{
 		_playerObject = GameObject.Find("Girl");
@@ -52,27 +57,34 @@ public class ColorAbsorption : MonoBehaviour
 		_sourceAnimator = GetComponent<Animator>();
 	}
 
+	//初期設定
 	private void Start()
 	{
 		_sourceAnimator.enabled = true;
 		enabled = false;
 	}
 
+	//移動
 	private void Update()
 	{
+		//プレイヤーに向かって移動
 		step = speed * Time.deltaTime;
 		transform.position = Vector3.MoveTowards(transform.position, _target.position, step);
 	}
 
+	//タッチした瞬間の処理
 	public virtual void AbsorbStart()
 	{
+		//アニメーションを中断し、移動を開始
 		_sourceAnimator.enabled = false;
 		enabled = true;
         _se.PlayBackSound(SoundEffectManager.SOUND_TYPE.SOUND_TYPE_GET);
 	}
 
+	//プレイヤーに当たった時の処理
 	private void AbsorbEnd()
 	{
+		//エフェクトの表示とUIの切り替え
 		Instantiate(DeathEffect, gameObject.transform.position, Quaternion.identity);
 		_nowColor.sprite = Absorb;
 		_mouseController.enabled = true;
@@ -81,6 +93,7 @@ public class ColorAbsorption : MonoBehaviour
         _se.PlayBackSound(SoundEffectManager.SOUND_TYPE.SOUND_TYPE_FAILUR);
 	}
 
+	//不正解時に元の場所に戻る
 	public void TurnBack()
 	{
 		gameObject.SetActive(true);
@@ -88,6 +101,7 @@ public class ColorAbsorption : MonoBehaviour
 		_sourceAnimator.SetBool(gameObject.name, true);
 	}
 
+	//Collider関連
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.gameObject.tag == "PlayerCenter") {

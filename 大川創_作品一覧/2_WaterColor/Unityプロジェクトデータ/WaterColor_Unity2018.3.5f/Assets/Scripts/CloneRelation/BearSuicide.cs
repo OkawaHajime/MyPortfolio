@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// 熊のリアクションアニメーションの削除を行う
+/// </summary>
 public class BearSuicide : CloneSuicide
 {
 	[SerializeField] private GameObject _burstColor = null;
@@ -25,6 +28,7 @@ public class BearSuicide : CloneSuicide
 		_se = _seObject.GetComponent<SoundEffectManager>();
 	}
 
+	//削除のタイミングでエフェクトの生成、熊の状態を元に戻す
 	protected override void Testament()
 	{
 		_se.PlayBackSound(SoundEffectManager.SOUND_TYPE.SOUND_TYPE_FAILUR);

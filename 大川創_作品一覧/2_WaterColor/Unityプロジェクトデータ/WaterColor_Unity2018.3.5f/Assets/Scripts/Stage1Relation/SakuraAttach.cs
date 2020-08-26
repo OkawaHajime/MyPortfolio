@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ColorAttachを継承
+/// 桜の木の着色時の処理
+/// 正解時：3つのイラストを移り変える
+/// 不正解時：無し
+/// </summary>
 public class SakuraAttach : ColorAttach
 {
 	private enum PHASE_GROWTH {
@@ -9,10 +15,10 @@ public class SakuraAttach : ColorAttach
 		PHASE_1,
 	};
 
-    [SerializeField]private GameObject _sakuraEffect = null;
-    [SerializeField]private Transform _effectGenerate = null;
-	[SerializeField]private Sprite _attach = null;
-	[SerializeField]private List<SpriteRenderer> Sakura_growth = new List<SpriteRenderer>();
+    [SerializeField] private GameObject _sakuraEffect = null;
+    [SerializeField] private Transform _effectGenerate = null;
+	[SerializeField] private Sprite _attach = null;
+	[SerializeField] private List<SpriteRenderer> Sakura_growth = new List<SpriteRenderer>();
 	private PHASE_GROWTH _phase = PHASE_GROWTH.PHASE_0;
 	private Vector3 _rotation = new Vector3(-90, 0, 0);
 	private float _time = 0.0f;
@@ -22,9 +28,16 @@ public class SakuraAttach : ColorAttach
 		enabled = false;
 	}
 
+	protected override void Regain()
+	{
+		enabled = true;
+		rend.sprite = _attach;
+        _colorSource.PossessionKill();
+	}
 
 	private void Update()
 	{
+		//イラスト切り替え
 		switch (_phase) {
 			case PHASE_GROWTH.PHASE_0:
 				actOnPhase0();
@@ -35,13 +48,7 @@ public class SakuraAttach : ColorAttach
 		}
 	}
 
-	protected override void Regain()
-	{
-		enabled = true;
-		rend.sprite = _attach;
-        _colorSource.PossessionKill();
-	}
-
+	//イラスト1をフェードイン、イラスト2をフェードアウトさせる
 	private void actOnPhase0()
 	{
 		_time += getDeltaTime();
@@ -53,6 +60,7 @@ public class SakuraAttach : ColorAttach
 		}
 	}
 
+	//イラスト2をフェードイン、イラスト3をフェードアウトさせ、プレイヤーにリアクションをさせる
 	private void actOnPhase1()
 	{
 		_time += getDeltaTime();
@@ -66,11 +74,13 @@ public class SakuraAttach : ColorAttach
 		}
 	}
 
+	//時間測定
 	private float getDeltaTime()
 	{
 		return Time.unscaledDeltaTime;
 	}
 
+	//透明度変更
 	private void setAlpha(float alpha, SpriteRenderer rend)
 	{
 		Color color = rend.color;

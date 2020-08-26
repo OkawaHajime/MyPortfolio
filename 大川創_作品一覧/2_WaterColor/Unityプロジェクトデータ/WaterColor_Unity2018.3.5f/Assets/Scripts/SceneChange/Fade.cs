@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// シーン遷移のアニメーション
+/// フェードイン、フェードアウトを行う
+/// </summary>
 public class Fade : SceneChangeEffect {
 	private Image _image;
 

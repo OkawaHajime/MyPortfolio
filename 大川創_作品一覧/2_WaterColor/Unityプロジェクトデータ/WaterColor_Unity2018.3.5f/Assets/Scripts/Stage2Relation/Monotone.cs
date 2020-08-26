@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ステージ2のオープニングイベントを行う
+/// </summary>
 public class Monotone : MonoBehaviour
 {
 	private Rigidbody2D _monotone = null;
@@ -14,6 +17,7 @@ public class Monotone : MonoBehaviour
 
 	private void Update()
 	{
+		//左に直進
 		_monotone.velocity = new Vector2(_speed, _monotone.velocity.y);
 	}
 }

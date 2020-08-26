@@ -2,6 +2,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// タッチされたときの色によって正解か不正解を判断する親クラス
+/// 正解、不正解時の処理は、このクラスを継承した子クラスで実装する
+/// 子クラスのScriptを、色を付ける対象のオブジェクトに付ける
+/// </summary>
 public class ColorAttach : MonoBehaviour
 {
 	[SerializeField] private string CorrectColor = null;
@@ -29,10 +34,40 @@ public class ColorAttach : MonoBehaviour
 
 	private void Awake()
 	{
-		Setting();
+		Initialize();
 	}
 
-	protected virtual void Setting()
+	//タッチ時にエフェクトとSEを再生する
+	public void AttachStart()
+	{
+		if (_nowColor.sprite.name != "UIMask") { 
+			box2D.enabled = false;
+			_effectGenerator.EffectGenerate(gameObject.name);
+            _se.PlayBackSound(SoundEffectManager.SOUND_TYPE.SOUND_TYPE_ATTACH);
+            StartCoroutine(AttachTrigger());
+		}
+	}
+
+	//正解か不正解で処理分岐
+	private IEnumerator AttachTrigger()
+	{
+		//エフェクトと色が変わるタイミングを合わせるために、0.2秒待つ
+		yield return new WaitForSeconds(0.2f);
+		if (_nowColor.sprite.name == CorrectColor) {
+			Regain();
+		}
+		else {
+			Failure();
+		}
+	}
+
+	/// <summary>
+	/// 以下virtual関数
+	/// 子クラスで実装する部分
+	/// </summary>
+ 
+	//情報取得
+	protected virtual void Initialize()
 	{
 		_playerObject = GameObject.Find("Girl");
 		_player = _playerObject.GetComponent<Player>();
@@ -56,27 +91,7 @@ public class ColorAttach : MonoBehaviour
 		rend = GetComponent<SpriteRenderer>();
 	}
 
-	public void AttachStart()
-	{
-		if (_nowColor.sprite.name != "UIMask") { 
-			box2D.enabled = false;
-			_effectGenerator.EffectGenerate(gameObject.name);
-            _se.PlayBackSound(SoundEffectManager.SOUND_TYPE.SOUND_TYPE_ATTACH);
-            StartCoroutine(AttachTrigger());
-		}
-	}
-
-	private IEnumerator AttachTrigger()
-	{
-		yield return new WaitForSeconds(0.2f);
-		if (_nowColor.sprite.name == CorrectColor) {
-			Regain();
-		}
-		else {
-			Failure();
-		}
-	}
-
+	//正解時の処理
 	protected virtual void Regain()
 	{
         _colorSource.PossessionKill();
@@ -84,6 +99,7 @@ public class ColorAttach : MonoBehaviour
 		_player.PlayerAnimationChange(Player.ANIM_TYPE.ANIM_TYPE_GLAD);
 	}
 
+	//不正解時の処理
 	protected virtual void Failure() 
 	{
         box2D.enabled = true;

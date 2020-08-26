@@ -2,7 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BearAttach : ColorAttach {
+/// <summary>
+/// ColorAttachを継承
+/// 熊の着色時の処理
+/// 正解時：喜びアニメーションを再生
+/// 不正解時：色に対応したアニメーションを再生
+/// </summary>
+public class BearAttach : ColorAttach 
+{
 	public enum BEAR {
 		BEAR_NORMAL,
 		BEAR_SAD,
@@ -22,16 +29,17 @@ public class BearAttach : ColorAttach {
 	private HoneyAttach _honey = null;
 	public bool Attach_complete = false;
 
-	protected override void Setting()
+	protected override void Initialize()
 	{
 		_honey_Object = GameObject.Find("Honey");
 		_honey = _honey_Object.GetComponent<HoneyAttach>();
-		base.Setting();
+		base.Initialize();
 		BearAnimationChange(BEAR.BEAR_NORMAL);
 	}
 
 	protected override void Regain()
 	{
+		//蜂の巣の進行状況によって分岐
 		if (_honey.Attach_complete) {
 			BearAnimationChange(BEAR.BEAR_GLAD);
 			base.Regain();
@@ -59,6 +67,7 @@ public class BearAttach : ColorAttach {
 		}
 	}
 
+	//アニメーションの切り替え
 	public void BearAnimationChange(BEAR _changeAnim)
 	{
 		ResetAnimation();
@@ -97,17 +106,20 @@ public class BearAttach : ColorAttach {
 
 	}
 
+	//指定された待機アニメーションを再生
 	private void SetPoseAnimation(int number)
 	{
 		_animations[number].SetActive(true);
 	}
 
+	//指定された失敗時アニメーションを再生
 	private void SetFailureAnimation(GameObject failure_color)
 	{
 		_clone = (GameObject)Instantiate(failure_color, gameObject.transform.position, Quaternion.identity);
 		_clone.transform.parent = gameObject.transform;
 	}
 
+	//全てのアニメーションを一度止める
 	private void ResetAnimation()
 	{
 		foreach (GameObject animation in _animations) {

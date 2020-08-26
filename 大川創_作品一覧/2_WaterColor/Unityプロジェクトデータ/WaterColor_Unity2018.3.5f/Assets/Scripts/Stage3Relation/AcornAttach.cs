@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ColorAttachを継承
+/// どんぐりの着色時の処理
+/// 正解時：Sprite切り替え
+/// 不正解時：色に対応したSpriteに切り替え
+/// </summary>
 public class AcornAttach : ColorAttach
 {
 	[SerializeField]private Sprite _correct = null;
@@ -20,6 +26,7 @@ public class AcornAttach : ColorAttach
 
 	protected override void Failure()
 	{
+		//色に対応したSpriteに切り替え
 		switch (_nowColor.sprite.name) {
 			case "Green":
 				rend.sprite = _failure_green;
@@ -34,6 +41,7 @@ public class AcornAttach : ColorAttach
 		}
 	}
 
+	//指定時間待機後、Spriteを元に戻す
 	private IEnumerator ReturnMonotone(GameObject death_color)
 	{
 		yield return new WaitForSeconds(_waitTime);

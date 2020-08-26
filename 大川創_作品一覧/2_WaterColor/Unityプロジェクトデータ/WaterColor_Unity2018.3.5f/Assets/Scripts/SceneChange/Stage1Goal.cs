@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ステージ1のゴールイベントを行う
+/// </summary>
 public class Stage1Goal : Goal
 {
     [SerializeField] private Rigidbody2D _playerRigid = null;
-    [SerializeField]private float _flySpeed = 0.0f;
+    [SerializeField] private float _flySpeed = 0.0f;
 
     private void Awake()
     {
@@ -14,6 +17,7 @@ public class Stage1Goal : Goal
 
     private void Update()
     {
+        //プレイヤー移動
         _playerRigid.velocity = new Vector2(_playerRigid.velocity.x, _flySpeed);
     }
 
@@ -26,6 +30,7 @@ public class Stage1Goal : Goal
 
     private IEnumerator StartChangeScene()
     {
+        //指定時間待ってからシーン遷移
         yield return new WaitForSeconds(0.5f);
         _scene_changer.changeScene();
     }

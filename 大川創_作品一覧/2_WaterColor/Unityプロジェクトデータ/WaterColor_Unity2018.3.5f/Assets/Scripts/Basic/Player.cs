@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// プレイヤーに付けるScript
+/// 主にプレイヤーの移動とアニメーションの切り替えを行う
+/// </summary>
 public class Player : MonoBehaviour
 {
 	private enum ACTION_TYPE {
@@ -31,12 +35,15 @@ public class Player : MonoBehaviour
 	private void Awake()
 	{
 		_rigidbody2D = GetComponent<Rigidbody2D>();
+
+		//アニメーションの初期設定
 		loopEnd = _player_animes[(int)ANIM_TYPE.ANIM_TYPE_GLAD].name;
 		PlayerAnimationChange(ANIM_TYPE.ANIM_TYPE_WALK);
 	}
 
 	private void Update()
 	{
+		//プレイヤー移動
 		switch (_action_type) {
 			case ACTION_TYPE.ACTION_TYPE_WALK:
 				Walk();
@@ -59,7 +66,7 @@ public class Player : MonoBehaviour
 		_rigidbody2D.velocity = new Vector2(0, _rigidbody2D.velocity.y);
 	}
 
-	//アニメーション
+	//アニメーション切り替え
 	public void PlayerAnimationChange(ANIM_TYPE _changeAnim)
 	{
 		ResetAnimation();
@@ -105,12 +112,15 @@ public class Player : MonoBehaviour
 
 	/*アニメーション切り替え
       (SpriteStudioでの切り替え方法がわからなかったため、GameObjectのactive状態で切り替えを行う)*/
+	
+	//歩き
 	private void SetWalkAnimation()
 	{
 		_player_animes[(int)ANIM_TYPE.ANIM_TYPE_WALK].SetActive(true);
 		_action_type = ACTION_TYPE.ACTION_TYPE_WALK;
 	}
 
+	//悩み
 	private void SetBotheredAnimation()
 	{
 		_reactionEffect.ReactionGenerate(ReactionEffectGenerator.REACTION_TYPE.REACTION_TYPE_QUESTION);
@@ -118,15 +128,17 @@ public class Player : MonoBehaviour
 		_action_type = ACTION_TYPE.ACTION_TYPE_STOP;
 	}
 
+	//直立
 	private void SetWaitAnimation()
 	{
 		_player_animes[(int)ANIM_TYPE.ANIM_TYPE_WAIT].SetActive(true);
 		_action_type = ACTION_TYPE.ACTION_TYPE_STOP;
 	}
 
-
 	/*リアクション系のアニメーションはactive状態の切り替えで行うと
 	  即座にリアクションを行わない場合があったため、Instantiateで再生する*/
+	
+	//喜び
 	private void SetGladAnimation()
 	{
 		_reactionEffect.ReactionGenerate(ReactionEffectGenerator.REACTION_TYPE.REACTION_TYPE_GLAD);
@@ -135,6 +147,7 @@ public class Player : MonoBehaviour
 		_action_type = ACTION_TYPE.ACTION_TYPE_STOP;
 	}
 
+	//驚き
 	private void SetSurpriseAnimation()
 	{
 		_reactionEffect.ReactionGenerate(ReactionEffectGenerator.REACTION_TYPE.REACTION_TYPE_SURPRISE);
@@ -143,6 +156,7 @@ public class Player : MonoBehaviour
 		_action_type = ACTION_TYPE.ACTION_TYPE_STOP;
 	}
 
+	//特殊（ステージクリア時などのリアクション）
     private void SetSpecialAnimation()
     {
         _clone = (GameObject)Instantiate(_player_animes[(int)ANIM_TYPE.ANIM_TYPE_SPECIAL], gameObject.transform.position, Quaternion.identity);

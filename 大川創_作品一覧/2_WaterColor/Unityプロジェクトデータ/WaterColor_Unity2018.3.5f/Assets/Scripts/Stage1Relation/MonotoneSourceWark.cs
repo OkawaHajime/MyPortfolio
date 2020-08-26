@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ステージ1のオープニングイベントを行う
+/// </summary>
 public class MonotoneSourceWark : MonoBehaviour
 {
 	[SerializeField]private Player _player = null;
@@ -10,16 +13,7 @@ public class MonotoneSourceWark : MonoBehaviour
 	[SerializeField]private Sprite _flowerGarden_mono = null;
 	[SerializeField]private float _speed = 600.0f;
 
-	private void OnCollisionEnter2D(Collision2D collision)
-	{
-		if(collision.gameObject.tag == "Finish") {
-			gameObject.SetActive(false);
-			Instantiate(_burst_yellow, gameObject.transform.position, Quaternion.identity);
-			_player.PlayerAnimationChange(Player.ANIM_TYPE.ANIM_TYPE_SURPRISE);
-			StartCoroutine(EndEvent());
-		}
-	}
-
+	//花畑を白黒にし、プレイヤーのアニメーションを切り替える
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.gameObject.tag == "Finish") {
@@ -30,6 +24,7 @@ public class MonotoneSourceWark : MonoBehaviour
 		}
 	}
 
+	//指定時間待った後、プレイヤーを動かし自身を削除
 	private IEnumerator EndEvent()
 	{
 		yield return new WaitForSeconds(1.01f);

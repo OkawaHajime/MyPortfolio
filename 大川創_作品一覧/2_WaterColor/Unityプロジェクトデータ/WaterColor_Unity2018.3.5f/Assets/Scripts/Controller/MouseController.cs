@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// アクション可能なオブジェクトにタッチした時の処理を実行する
+/// マウス版
+/// </summary>
 public class MouseController : MonoBehaviour
 {
 	[SerializeField]private AttachEffectGenerator _generator = null;
@@ -9,6 +13,7 @@ public class MouseController : MonoBehaviour
 	private Vector2 _worldPosition = new Vector2();
 	private RaycastHit2D hit = new RaycastHit2D();
 
+	//タッチ処理
 	private void Update()
 	{
 		if (Input.GetMouseButtonDown(0)) {
@@ -16,6 +21,7 @@ public class MouseController : MonoBehaviour
 			_worldPosition = Camera.main.ScreenToWorldPoint(_mousePosition);
 			hit = Physics2D.Raycast(_worldPosition, Vector2.zero);
 
+			//Rayを飛ばしてヒットしたオブジェクトによって処理を分岐
 			if (hit) {
 				switch (hit.collider.gameObject.tag) {
 					case "Source":

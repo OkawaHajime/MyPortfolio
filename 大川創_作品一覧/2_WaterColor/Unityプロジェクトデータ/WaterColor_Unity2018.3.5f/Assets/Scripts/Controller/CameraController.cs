@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// メインカメラに付ける
+/// 背景の遠近感を出すために、サブカメラの移動を行う
+/// </summary>
 public class CameraController : MonoBehaviour
 {
 	[SerializeField] private List<Transform> _subCameras = new List<Transform>();
@@ -11,18 +15,21 @@ public class CameraController : MonoBehaviour
 	private Vector3 positionPlus = new Vector3();
 	private int length = 0;
 
+	//初期設定
 	private void Awake()
 	{
-		length = _subCameras.Count;
-		_subCameras_start = new Vector3[length];
+		//メインカメラとサブカメラの初期位置を保存
 		_mainCamera = GetComponent<Transform>();
 		_mainCamera_start = _mainCamera.position;
-
+		
+		length = _subCameras.Count;
+		_subCameras_start = new Vector3[length];
 		for (int i = 0; i < length; i++) {
 			_subCameras_start[i] = _subCameras[i].position;
 		}
 	}
 
+	//サブカメラの移動
 	private void Update()
 	{
 		for (int i = 0; i < length; i++) {

@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// ゲームクリア時のアニメーション
+/// フェードで白背景と文字を浮かび上がらせる
+/// </summary>
 public class GameClear : SceneChangeEffect
 {
 	private Image _image;

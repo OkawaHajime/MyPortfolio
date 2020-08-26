@@ -2,6 +2,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 色を付ける際のエフェクトの生成を行う
+/// </summary>
 public class AttachEffectGenerator : MonoBehaviour
 {
 	private enum ATTACH_TYPE {
@@ -20,6 +23,7 @@ public class AttachEffectGenerator : MonoBehaviour
 	private GameObject _selectEffect = null;
 	private Vector3 positionPlus = new Vector3(0.0f, 0.0f, -20.0f);
 
+	//タッチされた対象の真ん中辺りにエフェクトを生成
 	public void EffectGenerate(string regainerName)
 	{
 		foreach (GameObject regainer in _regainers) {
@@ -30,6 +34,7 @@ public class AttachEffectGenerator : MonoBehaviour
 		}
 	}
 
+	//現在の色に応じて生成するエフェクトを変える
 	private void SelectEffect()
 	{
 		switch (_nowColor.sprite.name) {

@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ColorAttachを継承
+/// タンポポの着色時の処理
+/// 正解時：4つのイラストを移り変える
+/// 不正解時：無し
+/// </summary>
 public class DandelionAttach : ColorAttach
 {
 	[SerializeField] private Sprite _attach = null;
@@ -26,6 +32,7 @@ public class DandelionAttach : ColorAttach
 		StartCoroutine(GoSignal());
 	}
 
+	//指定時間待った後に切り替えを開始
 	private IEnumerator GoSignal()
 	{
 		yield return new WaitForSeconds(0.4f);
@@ -34,6 +41,7 @@ public class DandelionAttach : ColorAttach
 
 	private void Update()
 	{
+		//イラスト切り替え
 		switch (_phase) {
 			case PHASE_GROWTH.PHASE_0:
 				actOnPhase0();
@@ -47,6 +55,7 @@ public class DandelionAttach : ColorAttach
 		}
 	}
 
+	//イラスト1をフェードイン、イラスト2をフェードアウトさせる
 	private void actOnPhase0()
 	{
 		_time += getDeltaTime();
@@ -59,6 +68,7 @@ public class DandelionAttach : ColorAttach
 		}
 	}
 
+	//イラスト2をフェードイン、イラスト3をフェードアウトさせる
 	private void actOnPhase1()
 	{
 		_time += getDeltaTime();
@@ -70,6 +80,7 @@ public class DandelionAttach : ColorAttach
 		}
 	}
 
+	//イラスト3をフェードイン、イラスト4をフェードアウトさせ、プレイヤーにリアクションをさせる
 	private void actOnPhase2()
 	{
 		_time += getDeltaTime();
@@ -82,11 +93,13 @@ public class DandelionAttach : ColorAttach
 		}
 	}
 
+	//時間測定
 	private float getDeltaTime()
 	{
 		return Time.unscaledDeltaTime;
 	}
 
+	//透明度変更
 	private void setAlpha(float alpha, SpriteRenderer rend)
 	{
 		Color color = rend.color;

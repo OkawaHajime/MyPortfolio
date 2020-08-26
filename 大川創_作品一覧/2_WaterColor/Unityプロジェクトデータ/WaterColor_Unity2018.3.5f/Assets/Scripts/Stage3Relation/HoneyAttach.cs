@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ColorAttachを継承
+/// 蜂の巣の着色時の処理
+/// 
+/// </summary>
 public class HoneyAttach : ColorAttach
 {
 	[SerializeField]private Sprite _correct = null;
@@ -17,15 +22,16 @@ public class HoneyAttach : ColorAttach
 	private float _waitTime = 1.0f;
 	public bool Attach_complete = false;
 
-	protected override void Setting()
+	protected override void Initialize()
 	{
 		_bear_Object = GameObject.Find("Bear");
 		_bear = _bear_Object.GetComponent<BearAttach>();
-		base.Setting();
+		base.Initialize();
 	}
 
 	protected override void Regain()
 	{
+		//熊の進行状況によって分岐
 		if (_bear.Attach_complete) {
 			_bear.BearAnimationChange(BearAttach.BEAR.BEAR_GLAD);
 			rend.sprite = _correct;
@@ -41,6 +47,7 @@ public class HoneyAttach : ColorAttach
 
 	protected override void Failure()
 	{
+		//色に応じたSpriteに切り替え
 		switch (_nowColor.sprite.name) {
 			case "Brown":
 				rend.sprite = _failure_brown;
@@ -59,6 +66,7 @@ public class HoneyAttach : ColorAttach
 		}
 	}
 
+	//指定時間待機後、Spriteを元に戻す
 	private IEnumerator ReturnMonotone(GameObject death_color)
 	{
 		yield return new WaitForSeconds(_waitTime);
