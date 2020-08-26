@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// マッチが使用されたときに点灯させる
+/// </summary>
 public class Lamp : MonoBehaviour
 {
 	[SerializeField] private int _burnTime = 120;
@@ -17,6 +20,7 @@ public class Lamp : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 	}
 
+	//ランプを点灯
 	public void Ignition()
 	{
 		gameObject.tag = "Lamp_Burning";
@@ -24,6 +28,7 @@ public class Lamp : MonoBehaviour
 		StartCoroutine(Burning());
 	}
 
+	//指定時間待機後、消灯
 	private IEnumerator Burning()
 	{
 		yield return new WaitForSeconds(_burnTime);

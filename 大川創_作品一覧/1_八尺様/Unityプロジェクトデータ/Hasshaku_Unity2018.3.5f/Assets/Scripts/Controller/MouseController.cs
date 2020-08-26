@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// マウスでのクリック、ホイール操作を行う
+/// </summary>
 public class MouseController : MonoBehaviour
 {
     [SerializeField]private float _radius = 1.0f;

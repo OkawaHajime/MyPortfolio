@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Itemを継承
+/// 取得時に合計数をテキストで表示する
+/// </summary>
 public class KeyItem : Item
 {
 	[SerializeField]private int _clearConditions = 0;
@@ -28,6 +32,7 @@ public class KeyItem : Item
 		_keyItemPossess.text = _nowPossess.ToString() + " / " + _clearConditions.ToString();
 	}
 
+	//取得時に、現在のキーアイテム所持数を更新
 	public override void ObjectAction()
 	{
 		_nowPossess++;

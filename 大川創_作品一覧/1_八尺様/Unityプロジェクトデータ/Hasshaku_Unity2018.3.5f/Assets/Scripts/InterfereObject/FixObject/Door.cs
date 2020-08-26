@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// InterfereObjectを継承
+/// ドアの開閉のアニメーションを再生する
+/// </summary>
 public class Door : InterfereObject
 {
     [SerializeField] private AudioClip doorOpen = null;
@@ -19,11 +23,13 @@ public class Door : InterfereObject
 
 	public override void ObjectAction()
 	{
+		//ドアを開ける
 		if (!_open) {
 			_open = true;
 			_doorAnim.SetBool("Open", true);
 			audioSource.PlayOneShot(doorOpen);
 		} 
+		//ドアを閉じる
 		else {
 			_open = false;
 			_doorAnim.SetBool("Open", false);
@@ -31,6 +37,7 @@ public class Door : InterfereObject
 		}
 	}
 
+	//敵がドアに当たったら、ドアを開閉する
 	private void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.tag == "Enemy") {

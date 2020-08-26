@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// チュートリアルのクリア状況によってゲームオーバーシーンで表示する内容を切り替える
+/// </summary>
 public class GameOverManager : MonoBehaviour
 {
 	private GameObject _gameOver = null;

@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
 
+/// <summary>
+/// アイテムの保持状態を管理する
+/// </summary>
 public class ItemManager : MonoBehaviour
 {
     [SerializeField] private Text _itemUI = null;
@@ -52,6 +55,7 @@ public class ItemManager : MonoBehaviour
 		}
 	}
 
+	//アイテム取得
 	public void GetItem(GameObject item)
 	{
 		_item = item.GetComponent<Item>();
@@ -60,12 +64,14 @@ public class ItemManager : MonoBehaviour
 			_possessionItems.Add(_item);
             _audioSource.PlayOneShot(_takeItem);
 
+			//初期装備でライトを取得
 			if (!_initialSetting) {
 				_initialSetting = true;
 				_itemNumber = 0;
 				DisplayItem(_itemNumber);
 			}
 
+			//何のアイテムを拾ったかテキストで表示
 			foreach(Transform getItemText in _getItemUI.transform) {
 				getItemText.gameObject.SetActive(false);
 			}
@@ -83,13 +89,16 @@ public class ItemManager : MonoBehaviour
 					break;
 			}
         }
+		//キーアイテムの時、専用のSEを再生
 		else if (item.name == "KeyItem") {
             _audioSource.PlayOneShot(_takeClearItem);
 		}
 
+		//現在のアイテム所持数を表示
         _itemUI.text = "持てるあいてむ " + _possessionItems.Count.ToString() + " / 3";
 	}
 	
+	//画面に表示されているアイテムの効果を発揮
 	public void UseItem()
 	{
 		if (_possessionItems.Count != 0) {
@@ -109,14 +118,15 @@ public class ItemManager : MonoBehaviour
 		}
 	}
 
+	//アイテムをその場に置く
 	public void DisposeItem()
 	{
 		if (_possessionItems.Count != 0) {
 			_possessionItems[_itemNumber].ItemDrop();
 			_possessionItems.Remove(_possessionItems[_itemNumber]);
 			
+			//ライトの関係上、アイテム変更の通知を出してからアイテム表示を消す
 			if (_possessionItems.Count == 0) {
-				//ライトの関係上、OnNextしてからアイテム表示を消す
 				_changeItem.OnNext(Unit.Default);
 				ResetDisplayItem();
 			}
@@ -128,6 +138,7 @@ public class ItemManager : MonoBehaviour
         }
     }
 	
+	//アイテムの変更
 	public void ChangeItem(bool up)
 	{
 		_changeItem.OnNext(Unit.Default);
@@ -135,14 +146,12 @@ public class ItemManager : MonoBehaviour
 		if (_possessionItems.Count != 0) {
 			if (up) {
 				_itemNumber++;
-				
 				if(_itemNumber > _possessionItems.Count - 1){
 					_itemNumber = 0;
 				}
 			}
 			else {
 				_itemNumber--;
-				
 				if (_itemNumber < 0){
 					_itemNumber = _possessionItems.Count - 1;
 				}
@@ -153,14 +162,13 @@ public class ItemManager : MonoBehaviour
 		}
 	}
 	
+	//特定のアイテムを表示
 	private void DisplayItem(int itemNumber)
 	{
 		ResetDisplayItem();
-		
 		foreach (Transform item in _possessionItemUI.transform) {
 			if(item.gameObject.name == _possessionItems[itemNumber].name) {
 				item.gameObject.SetActive(true);
-				
                 _riseItem = item.GetComponentInChildren<Animator>();
 				_riseItem.Play("RiseItem");
 				break;
@@ -168,6 +176,7 @@ public class ItemManager : MonoBehaviour
 		}
 	}
 
+	//画面に表示されているアイテムを全て非表示にする
 	private void ResetDisplayItem()
 	{
 		foreach (Transform child in _possessionItemUI.transform) {

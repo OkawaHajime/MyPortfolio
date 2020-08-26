@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
+/// <summary>
+/// チュートリアル専用の敵を削除
+/// </summary>
 public class TutorialEnemyKiller : MonoBehaviour
 {
 	[SerializeField]private Animator _volume = null;
