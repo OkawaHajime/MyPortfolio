@@ -326,5 +326,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grace: 1
-  _burst_color: {fileID: 6975345443525400821, guid: a29f4fd582fc3db4d81593e8f60c107d,
+  _burstColor: {fileID: 6975345443525400821, guid: a29f4fd582fc3db4d81593e8f60c107d,
     type: 3}

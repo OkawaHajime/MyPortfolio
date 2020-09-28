@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grace: 1
-  _burst_color: {fileID: 6975345443525400821, guid: 8a95589da66825644bd4f0dd49ffbf65,
+  _burstColor: {fileID: 6975345443525400821, guid: 8a95589da66825644bd4f0dd49ffbf65,
     type: 3}
 --- !u!1 &1398779929587139843
 GameObject:
